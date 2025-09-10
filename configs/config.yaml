@@ -1,0 +1,28 @@
+# CogAtom配置文件
+
+# 知识提取配置
+knowledge:
+  model: "gpt-4o"
+  api_key: "${OPENAI_API_KEY}"  # 从环境变量读取
+  batch_size: 10
+
+# 图构建配置  
+graph:
+  clustering_method: "leiden"
+  min_edge_weight: 0.1
+  co_occurrence_window: 5
+
+# 问题生成配置
+generation:
+  model: "qwen2.5-72b"
+  api_key: "${QWEN_API_KEY}"
+  max_problems_per_batch: 100
+  sampling_strategy: "weighted_random_walk"
+  temperature: 0.7
+
+# 质量评估配置
+evaluation:
+  model: "gpt-4o"
+  api_key: "${OPENAI_API_KEY}"
+  quality_threshold: 0.7
+  batch_size: 20

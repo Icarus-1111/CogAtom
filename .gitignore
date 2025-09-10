@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 数据文件（除了samples）
+data/raw/
+data/processed/
+data/generated/
+data/evaluation/
+!data/samples/
+
+# 配置文件中的敏感信息
+configs/local_config.yaml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.temp
+
+# 环境变量文件
+.env
