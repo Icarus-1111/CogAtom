@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2025-09-13 17:08:18",
+    "timestamp": "2025-09-14 14:51:48",
     "project": "CogAtom",
     "configuration": "cogatom_247_90",
     "constructor_version": "1.0.0"
@@ -222,43 +222,43 @@
       "top_betweenness_centrality": [
         [
           "Relationships between surface area, volume, and box dimensions",
-          0.14343630917447275
-        ],
-        [
-          "Trigonometric Functions",
-          0.12420758783423322
+          0.14053634875923873
         ],
         [
           "Logic in Problem Solving",
-          0.11998240844027895
+          0.12829273516837153
         ],
         [
-          "Trigonometric Identities",
-          0.08342787696195007
+          "Trigonometric Functions",
+          0.12553578330830506
         ],
         [
           "Properties of Square Roots",
-          0.07803160005763894
+          0.07975665688232068
+        ],
+        [
+          "Trigonometric Identities",
+          0.07837568190770987
         ],
         [
           "Right Triangle Properties",
-          0.06997353515623525
+          0.07751565803795483
         ],
         [
           "Case Analysis for Absolute Values",
-          0.060837056794192435
+          0.05946518995218863
         ],
         [
           "Symmetry in Variables",
-          0.04746402177650106
+          0.050412604770753947
         ],
         [
           "Spatial Visualization",
-          0.0366754228879366
+          0.03480798789481965
         ],
         [
-          "Understanding integer constraints",
-          0.02634262170582789
+          "Trigonometric Relationships",
+          0.03054530603955058
         ]
       ]
     }
@@ -512,43 +512,43 @@
       "top_betweenness_centrality": [
         [
           "Basic Algebra",
-          0.0680050453866142
+          0.07063723779182512
         ],
         [
           "Division and Simplification",
-          0.060009123654581185
+          0.06530399366227901
         ],
         [
           "Square Root Property",
-          0.05878264549891847
+          0.06451131482572092
         ],
         [
           "Boundary Value Analysis",
-          0.056188862064999325
-        ],
-        [
-          "Logarithmic Properties",
-          0.05599073037130458
+          0.06167772826578366
         ],
         [
           "Lagrange Multipliers",
-          0.053030642637090855
+          0.056743873672187216
+        ],
+        [
+          "Logarithmic Properties",
+          0.05629083339620514
         ],
         [
           "Order of Operations (PEMDAS)",
-          0.047485868410730485
+          0.052785573678742134
+        ],
+        [
+          "Exponentiation Rules",
+          0.048961565787527965
         ],
         [
           "Functional Equation Analysis",
-          0.04500524062399177
+          0.04892681550590122
         ],
         [
-          "Least Common Multiple (LCM)",
-          0.04497057984112557
-        ],
-        [
-          "Multiplication Principle of Counting",
-          0.04417016325356514
+          "Verification of Solutions",
+          0.04686077481125062
         ]
       ]
     }

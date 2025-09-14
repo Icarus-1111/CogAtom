@@ -4,24 +4,24 @@ CogAtom Cognitive Atom Generation Quality Report
 Generation Statistics:
 ------------------------------
 total_paths_processed: 2372
-total_combinations_generated: 16880
-unique_combinations: 13784
-order_dependent_duplicates_removed: 3096
-bridge_operations: 3539
-perturbation_operations: 3829
+total_combinations_generated: 16861
+unique_combinations: 13687
+order_dependent_duplicates_removed: 3174
+bridge_operations: 3499
+perturbation_operations: 3730
 quality_filtered: 0
-processing_time: 5.416701793670654
+processing_time: 5.5146164894104
 
 Deduplication Information:
 ------------------------------
 Order-independent deduplication: True
-Order-dependent duplicates removed: 3096
+Order-dependent duplicates removed: 3174
 
 Quality Metrics (sample of 1000 combinations):
 ------------------------------
-Average connectivity score: 0.423
-Average overall quality: 0.439
-Knowledge point coverage: 0.720
+Average connectivity score: 0.425
+Average overall quality: 0.440
+Knowledge point coverage: 0.727
 
 Configuration:
 ------------------------------

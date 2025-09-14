@@ -73,7 +73,6 @@ coverage.xml
 docs/_build/
 
 # Large data files that should not be in git
-data/raw/download_data/
 data/processed/embeddings/*.npy
 data/processed/embeddings/*.pkl
 

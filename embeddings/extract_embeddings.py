@@ -370,8 +370,8 @@ def main():
                        default=str(default_output_dir),
                        help='Output directory for embeddings')
     parser.add_argument('--model_path', type=str,
-                       default='/mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/3A/hejiyuan/decontamination/bge-m3',
-                       help='Path to BGE-M3 model')
+                   default='./models/bge-m3',
+                   help='Path to BGE-M3 model')
     parser.add_argument('--batch_size', type=int, default=256,
                        help='Batch size for encoding')
     parser.add_argument('--num_processes', type=int, default=1,

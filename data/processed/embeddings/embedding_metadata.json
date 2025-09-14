@@ -6,8 +6,8 @@
     1024
   ],
   "sparse_embedding_count": 3169,
-  "processing_time_seconds": 3.2941863536834717,
-  "timestamp": "2025-09-12 23:13:41",
+  "processing_time_seconds": 13.832870483398438,
+  "timestamp": "2025-09-14 14:51:42",
   "model_config": {
     "use_fp16": true,
     "pooling_method": "cls",

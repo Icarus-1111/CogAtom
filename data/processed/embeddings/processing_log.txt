@@ -10,8 +10,8 @@ Model path: /mnt/dolphinfs/hdd_pool/docker/user/hadoop-aipnlp/3A/hejiyuan/decont
 Number of unique knowledge point names: 3169
 Dense embedding shape: (3169, 1024)
 Sparse embedding count: 3169
-Processing time: 3.29 seconds
-Timestamp: 2025-09-12 23:13:41
+Processing time: 13.83 seconds
+Timestamp: 2025-09-14 14:51:42
 
 Sample knowledge point names:
   1: AM-GM Inequality
