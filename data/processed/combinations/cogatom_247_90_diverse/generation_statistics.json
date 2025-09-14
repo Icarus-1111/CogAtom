@@ -1,0 +1,34 @@
+{
+  "generation_statistics": {
+    "total_paths_processed": 2372,
+    "total_combinations_generated": 16880,
+    "unique_combinations": 13784,
+    "order_dependent_duplicates_removed": 3096,
+    "bridge_operations": 3539,
+    "perturbation_operations": 3829,
+    "quality_filtered": 0,
+    "processing_time": 5.416701793670654
+  },
+  "quality_metrics": {
+    "average_connectivity_score": 0.4232312882885266,
+    "average_overall_quality": 0.43900632068141193,
+    "knowledge_point_coverage": 0.71964586846543,
+    "sample_size": 1000,
+    "total_combinations": 13784
+  },
+  "deduplication_info": {
+    "order_independent_enabled": true,
+    "order_dependent_duplicates_removed": 3096
+  },
+  "configuration": {},
+  "dependency_graph_stats": {
+    "total_nodes": 2393,
+    "total_edges": 9587,
+    "node_pool_size": 2372,
+    "average_out_degree": 4.0062682824905975,
+    "average_in_degree": 4.0062682824905975,
+    "density": 0.0016748613221114538,
+    "strongly_connected_components": 624,
+    "weakly_connected_components": 102
+  }
+}

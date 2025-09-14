@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-09-13 10:51:43",
+  "source_file": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-aipnlp/3A/pretrain-data/chenzhuofan02/cogatom/data/processed/knowledge_consolidation/consolidated_knowledge_points.txt",
+  "total_problems": 530,
+  "total_knowledge_points": 3785,
+  "average_points_per_problem": 7.1415094339622645,
+  "max_points_per_problem": 15,
+  "min_points_per_problem": 2,
+  "median_points_per_problem": 7,
+  "data_name": "cogatom",
+  "file_formats": {
+    "json": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-aipnlp/3A/pretrain-data/chenzhuofan02/cogatom/data/processed/knowledge_points/processed/cogatom_knowledge_list.json",
+    "pickle": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-aipnlp/3A/pretrain-data/chenzhuofan02/cogatom/data/processed/knowledge_points/processed/cogatom_knowledge_list.pkl",
+    "text": "/mnt/dolphinfs/ssd_pool/docker/user/hadoop-aipnlp/3A/pretrain-data/chenzhuofan02/cogatom/data/processed/knowledge_points/processed/cogatom_knowledge_list.txt"
+  }
+}

@@ -19,30 +19,76 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# 数据文件（除了samples）
-data/raw/
-data/processed/
-data/generated/
-data/evaluation/
-!data/samples/
-
-# 配置文件中的敏感信息
-configs/local_config.yaml
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
-# 日志
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
 *.log
 logs/
 
-# 临时文件
+# Temporary files
 *.tmp
 *.temp
+temp_*
+.temp/
 
-# 环境变量文件
-.env
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Documentation builds
+docs/_build/
+
+# Large data files that should not be in git
+data/raw/download_data/
+data/processed/embeddings/*.npy
+data/processed/embeddings/*.pkl
+
+# Model files and large binaries
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.model
+*.bin
+
+# Configuration files with sensitive information
+configs/local_config.yaml
+*.key
+*.secret
+
+# Generated utility files
+detailed_check.py

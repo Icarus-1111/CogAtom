@@ -1,0 +1,556 @@
+{
+  "metadata": {
+    "timestamp": "2025-09-13 17:08:18",
+    "project": "CogAtom",
+    "configuration": "cogatom_247_90",
+    "constructor_version": "1.0.0"
+  },
+  "input_data": {
+    "total_edges_loaded": 11504,
+    "weight_transformation": "log1p",
+    "min_edge_weight_threshold": 1
+  },
+  "duplicate_edges": {
+    "total_duplicate_edges": 0,
+    "total_duplicate_occurrences": 0,
+    "duplicate_details": []
+  },
+  "supernode_analysis": {
+    "total_nodes": 2730,
+    "mean_degree": 8.427838827838828,
+    "std_degree": 9.364579126462747,
+    "threshold": 27.15699708076432,
+    "lambda_param": 2.0,
+    "supernodes_count": 62,
+    "supernodes_percentage": 2.271062271062271,
+    "supernode_degrees": {
+      "Logic in Problem Solving": 198,
+      "Properties of Square Roots": 140,
+      "Right Triangle Properties": 111,
+      "Symmetry in Variables": 95,
+      "Understanding integer constraints": 55,
+      "Interior and Exterior Angles of a Polygon": 40,
+      "Trigonometric Functions": 159,
+      "Modular Arithmetic": 53,
+      "Relationships between surface area, volume, and box dimensions": 176,
+      "Trigonometric Identities": 133,
+      "Domain of a Function": 31,
+      "Properties of square roots": 49,
+      "Newton's Second Law of Motion": 36,
+      "Distributive Property": 34,
+      "Identification of a small square within a larger square": 49,
+      "Cyclic Quadrilateral Properties": 28,
+      "Roots of Unity": 40,
+      "Prime Numbers": 42,
+      "Understanding Repeating Decimals": 40,
+      "Probability Basics": 38,
+      "Cross Product in 3D": 66,
+      "Trigonometric Relationships": 57,
+      "Case Analysis for Absolute Values": 109,
+      "Absolute Value Function": 40,
+      "Properties of Roots of Unity": 29,
+      "Squaring Both Sides of an Equation": 37,
+      "Equating Coefficients": 57,
+      "Polynomial Division": 28,
+      "Order of Operations": 34,
+      "Substitution": 41,
+      "Integer Factorization and Divisors": 48,
+      "Coordinate Geometry": 60,
+      "Perimeter of a regular polygon": 29,
+      "Evaluation of function values": 37,
+      "Properties of a Rectangle": 51,
+      "Law of Cosines": 34,
+      "Symmetry in Geometry": 34,
+      "Spatial Visualization": 66,
+      "Solving Rational Equations": 32,
+      "Logical Reasoning": 33,
+      "Exponentiation": 31,
+      "Pythagorean Theorem": 45,
+      "Modulo Operation": 31,
+      "Optimization in Geometry": 29,
+      "Magnitude of a Vector": 34,
+      "Factorial Calculation": 40,
+      "Critical Point Analysis": 31,
+      "Quadratic Functions": 36,
+      "Stars and Bars Theorem": 30,
+      "Integer Common Ratio in Geometric Sequence": 29,
+      "Vertex of a Parabola": 28,
+      "Triangle Area Formula": 29,
+      "Identifying Symmetry in Algebraic Expressions": 34,
+      "Simplify computations with π": 29,
+      "Sum of Angles in Quadrilateral": 46,
+      "Maximization of Trigonometric Functions": 28,
+      "Triangle Inequality": 47,
+      "Simplification of Algebraic Expressions": 28,
+      "Proportional Relationships": 45,
+      "Fraction of Area Cut by Parallel Lines": 36,
+      "Understanding cube roots": 28,
+      "Interval notation": 29
+    }
+  },
+  "original_graph": {
+    "basic_properties": {
+      "nodes": 2730,
+      "edges": 11504,
+      "density": 0.0030882516774785006,
+      "is_connected": false
+    },
+    "degree_statistics": {
+      "mean": 8.427838827838828,
+      "std": 9.364579126462747,
+      "min": 1,
+      "max": 198,
+      "median": 7.0
+    },
+    "weight_statistics": {
+      "mean": 0.7259842973463411,
+      "std": 0.13580632813659396,
+      "min": 0.6931471805599453,
+      "max": 3.4657359027997265,
+      "median": 0.6931471805599453
+    },
+    "connectivity": {
+      "connected_components": 61,
+      "largest_component_size": 2324,
+      "component_sizes": [
+        2324,
+        6,
+        3,
+        5,
+        7,
+        9,
+        13,
+        3,
+        4,
+        4,
+        9,
+        9,
+        10,
+        6,
+        5,
+        5,
+        5,
+        6,
+        5,
+        8,
+        7,
+        7,
+        5,
+        4,
+        14,
+        5,
+        9,
+        8,
+        4,
+        7,
+        10,
+        5,
+        5,
+        7,
+        7,
+        5,
+        7,
+        14,
+        8,
+        10,
+        6,
+        5,
+        6,
+        7,
+        4,
+        10,
+        6,
+        5,
+        7,
+        6,
+        8,
+        7,
+        5,
+        7,
+        5,
+        6,
+        6,
+        7,
+        7,
+        6,
+        10
+      ]
+    },
+    "centrality": {
+      "top_degree_centrality": [
+        [
+          "Logic in Problem Solving",
+          0.07255404910223524
+        ],
+        [
+          "Relationships between surface area, volume, and box dimensions",
+          0.06449248809087578
+        ],
+        [
+          "Trigonometric Functions",
+          0.05826310003664346
+        ],
+        [
+          "Properties of Square Roots",
+          0.05130084279956028
+        ],
+        [
+          "Trigonometric Identities",
+          0.04873580065958227
+        ],
+        [
+          "Right Triangle Properties",
+          0.04067423964822279
+        ],
+        [
+          "Case Analysis for Absolute Values",
+          0.03994137046537193
+        ],
+        [
+          "Symmetry in Variables",
+          0.0348112861854159
+        ],
+        [
+          "Cross Product in 3D",
+          0.024184683034078416
+        ],
+        [
+          "Spatial Visualization",
+          0.024184683034078416
+        ]
+      ],
+      "top_betweenness_centrality": [
+        [
+          "Relationships between surface area, volume, and box dimensions",
+          0.14343630917447275
+        ],
+        [
+          "Trigonometric Functions",
+          0.12420758783423322
+        ],
+        [
+          "Logic in Problem Solving",
+          0.11998240844027895
+        ],
+        [
+          "Trigonometric Identities",
+          0.08342787696195007
+        ],
+        [
+          "Properties of Square Roots",
+          0.07803160005763894
+        ],
+        [
+          "Right Triangle Properties",
+          0.06997353515623525
+        ],
+        [
+          "Case Analysis for Absolute Values",
+          0.060837056794192435
+        ],
+        [
+          "Symmetry in Variables",
+          0.04746402177650106
+        ],
+        [
+          "Spatial Visualization",
+          0.0366754228879366
+        ],
+        [
+          "Understanding integer constraints",
+          0.02634262170582789
+        ]
+      ]
+    }
+  },
+  "cleaned_graph": {
+    "basic_properties": {
+      "nodes": 2668,
+      "edges": 8532,
+      "density": 0.0023981260213537777,
+      "is_connected": false
+    },
+    "degree_statistics": {
+      "mean": 6.395802098950525,
+      "std": 3.1909514698869996,
+      "min": 0,
+      "max": 26,
+      "median": 6.0
+    },
+    "weight_statistics": {
+      "mean": 0.7131810768795751,
+      "std": 0.0966787055733588,
+      "min": 0.6931471805599453,
+      "max": 1.9459101490553132,
+      "median": 0.6931471805599453
+    },
+    "connectivity": {
+      "connected_components": 176,
+      "largest_component_size": 1494,
+      "component_sizes": [
+        2,
+        1,
+        1494,
+        6,
+        3,
+        1,
+        4,
+        1,
+        16,
+        1,
+        9,
+        8,
+        4,
+        5,
+        5,
+        5,
+        16,
+        2,
+        7,
+        9,
+        4,
+        9,
+        5,
+        13,
+        3,
+        2,
+        4,
+        10,
+        9,
+        19,
+        4,
+        8,
+        9,
+        3,
+        14,
+        3,
+        1,
+        9,
+        7,
+        6,
+        17,
+        9,
+        15,
+        10,
+        32,
+        6,
+        11,
+        5,
+        13,
+        9,
+        6,
+        10,
+        4,
+        3,
+        15,
+        13,
+        5,
+        5,
+        5,
+        6,
+        5,
+        6,
+        4,
+        3,
+        5,
+        13,
+        3,
+        5,
+        8,
+        7,
+        9,
+        7,
+        3,
+        5,
+        3,
+        4,
+        14,
+        5,
+        1,
+        9,
+        3,
+        15,
+        4,
+        3,
+        6,
+        23,
+        4,
+        6,
+        8,
+        4,
+        5,
+        17,
+        7,
+        10,
+        5,
+        2,
+        6,
+        5,
+        7,
+        7,
+        3,
+        5,
+        6,
+        12,
+        7,
+        7,
+        7,
+        7,
+        4,
+        7,
+        5,
+        6,
+        7,
+        7,
+        14,
+        2,
+        8,
+        6,
+        3,
+        10,
+        7,
+        5,
+        4,
+        3,
+        7,
+        4,
+        3,
+        6,
+        7,
+        5,
+        4,
+        7,
+        8,
+        5,
+        5,
+        1,
+        6,
+        4,
+        5,
+        3,
+        7,
+        4,
+        5,
+        9,
+        4,
+        6,
+        10,
+        6,
+        5,
+        14,
+        5,
+        6,
+        7,
+        5,
+        9,
+        6,
+        8,
+        3,
+        5,
+        7,
+        5,
+        5,
+        7,
+        5,
+        9,
+        6,
+        6,
+        7,
+        6,
+        7,
+        7,
+        6,
+        6,
+        10,
+        6,
+        1
+      ]
+    },
+    "centrality": {
+      "top_degree_centrality": [
+        [
+          "Understanding Regular Polygons",
+          0.00974878140232471
+        ],
+        [
+          "System of Linear Equations",
+          0.008998875140607425
+        ],
+        [
+          "Multiplication Principle of Counting",
+          0.008623922009748783
+        ],
+        [
+          "Determining Integer Values from an Expression",
+          0.008623922009748783
+        ],
+        [
+          "Factorization Constraint of GCD and LCM",
+          0.008623922009748783
+        ],
+        [
+          "Verification of Solutions",
+          0.008248968878890138
+        ],
+        [
+          "Basic arithmetic operations",
+          0.008248968878890138
+        ],
+        [
+          "Equation of a Circle",
+          0.008248968878890138
+        ],
+        [
+          "Prime factorization",
+          0.008248968878890138
+        ],
+        [
+          "Conversion between Polar and Cartesian Coordinates",
+          0.008248968878890138
+        ]
+      ],
+      "top_betweenness_centrality": [
+        [
+          "Basic Algebra",
+          0.0680050453866142
+        ],
+        [
+          "Division and Simplification",
+          0.060009123654581185
+        ],
+        [
+          "Square Root Property",
+          0.05878264549891847
+        ],
+        [
+          "Boundary Value Analysis",
+          0.056188862064999325
+        ],
+        [
+          "Logarithmic Properties",
+          0.05599073037130458
+        ],
+        [
+          "Lagrange Multipliers",
+          0.053030642637090855
+        ],
+        [
+          "Order of Operations (PEMDAS)",
+          0.047485868410730485
+        ],
+        [
+          "Functional Equation Analysis",
+          0.04500524062399177
+        ],
+        [
+          "Least Common Multiple (LCM)",
+          0.04497057984112557
+        ],
+        [
+          "Multiplication Principle of Counting",
+          0.04417016325356514
+        ]
+      ]
+    }
+  }
+}

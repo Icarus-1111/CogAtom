@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-09-13 09:41:41",
+  "total_knowledge_points": 3169,
+  "similarity_thresholds": [
+    0.9,
+    0.8
+  ],
+  "results_summary": {
+    "0.9": {
+      "num_clusters": 247,
+      "total_points_in_clusters": 719,
+      "compression_ratio": 12.82995951417004,
+      "percentage_clustered": 22.688545282423476
+    },
+    "0.8": {
+      "num_clusters": 198,
+      "total_points_in_clusters": 2204,
+      "compression_ratio": 16.005050505050505,
+      "percentage_clustered": 69.54875355001577
+    }
+  }
+}
