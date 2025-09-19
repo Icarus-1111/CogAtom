@@ -1,4 +1,5 @@
-# scripts/process_data.py
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import os
 import json
@@ -17,27 +18,12 @@ class DataProcessor:
         self.output_with_docid = Path("data/processed/with_docid")
         self.output_for_extraction = Path("data/processed/for_extraction")
         
-        # Dataset configuration
+        # Dataset configuration - Only GSM8K_train
         self.datasets = [
             {
                 "name": "GSM8K_train",
                 "type": "parquet",
                 "path": self.base_path / "openai/gsm8k/main/train-00000-of-00001.parquet"
-            },
-            {
-                "name": "GSM8K_test",
-                "type": "parquet", 
-                "path": self.base_path / "openai/gsm8k/main/test-00000-of-00001.parquet"
-            },
-            {
-                "name": "MATH-500_test",
-                "type": "jsonl",
-                "path": self.base_path / "HuggingFaceH4/MATH-500/test.jsonl"
-            },
-            {
-                "name": "AIME_2024",
-                "type": "parquet",
-                "path": self.base_path / "Maxwell-Jia/AIME_2024/aime_2024_problems.parquet"
             }
         ]
         
@@ -142,7 +128,7 @@ class DataProcessor:
             })
         
         # Summary table
-        print(f"\n--- Dataset Comparison Summary ---")
+        print(f"\n--- Dataset Summary ---")
         if all_info:
             table = []
             for info in all_info:
@@ -151,10 +137,10 @@ class DataProcessor:
                     info['type'],
                     info['size'],
                     info['n_rows'],
-                    ", ".join(info['columns'][:3]) + ("..." if len(info['columns']) > 3 else "")
+                    ", ".join(info['columns'])
                 ])
             
-            headers = ["Dataset", "Type", "Size", "Rows", "Columns (first 3)"]
+            headers = ["Dataset", "Type", "Size", "Rows", "Columns"]
             print(tabulate(table, headers=headers, tablefmt="grid"))
         
         return all_info
@@ -412,7 +398,7 @@ class DataProcessor:
     
     def run_complete_pipeline(self):
         """Run the complete data processing pipeline"""
-        print("CogAtom Data Processing Pipeline")
+        print("CogAtom Data Processing Pipeline - GSM8K Train Only")
         print("="*60)
         
         try:
@@ -431,7 +417,7 @@ class DataProcessor:
             # Final summary
             self.print_sep("Processing Complete!")
             print("Summary:")
-            print(f"  • Explored {len(dataset_info)} datasets")
+            print(f"  • Processed GSM8K training dataset")
             print(f"  • Generated {len(docid_stats)} files with doc_ids")
             print(f"  • Created {len(extraction_results)} extraction files")
             print(f"  • Total processed lines: {sum(count for _, count in line_counts)}")
@@ -440,9 +426,13 @@ class DataProcessor:
             print(f"  • With doc_ids: {self.output_with_docid}")
             print(f"  • For extraction: {self.output_for_extraction}")
             
+            print("\nOutput files:")
+            print(f"  • GSM8K_train_with_docid.jsonl")
+            print(f"  • GSM8K_train_with_docid_for_extraction.txt")
+            
             print("\nNext steps:")
-            print("  1. Check the extraction files in data/processed/for_extraction/")
-            print("  2. Run knowledge extraction: python -m cogatom.knowledge_extraction")
+            print("  1. Check the extraction file: data/processed/for_extraction/GSM8K_train_with_docid_for_extraction.txt")
+            print("  2. Run knowledge extraction: python knowledge_extraction.py")
             
             return True
             
@@ -458,9 +448,10 @@ def main():
     success = processor.run_complete_pipeline()
     
     if success:
-        print("All data processing completed successfully!")
+        print("\n✅ GSM8K training data processing completed successfully!")
+        print("📁 Ready for knowledge extraction with ~7,473 math problems")
     else:
-        print("Data processing failed. Please check the error messages above.")
+        print("❌ Data processing failed. Please check the error messages above.")
         sys.exit(1)
 
 if __name__ == "__main__":

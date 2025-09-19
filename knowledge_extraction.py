@@ -101,11 +101,10 @@ class UnifiedOpenAIClient:
             
             print(f"[DEBUG] Creating internal API client...")
             self.client = InternalOpenAIClient(
-                app_key=app_key or 1791012913151668297,  # Default app key from reference
+                app_key=app_key or "YOUR_INTERNAL_API_KEY_HERE",  # Default app key from reference
                 max_tokens=16384,
                 timeout=60*1000*5
             )
-            print(f"[INFO] Initialized internal API client with app_key={app_key or 1791012913151668297}")
             
         elif self.api_mode == "standard":
             if not standard_available:

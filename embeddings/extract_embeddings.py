@@ -22,26 +22,44 @@ logger = logging.getLogger(__name__)
 
 
 def get_project_root():
-    """Get the project root directory (cogatom/)"""
-    # Get the directory where this script is located (embeddings/)
-    script_dir = Path(__file__).parent
-    # Go up one level to get project root (cogatom/)
-    project_root = script_dir.parent
-    return project_root
+    """Get the project root directory as relative path"""
+    # Always return current directory to avoid absolute path exposure
+    return Path(".")
 
 
 def get_node_rank_and_node_nums():
     """Get node rank and total number of nodes from cluster environment"""
     try:
-        cluster_spec = json.loads(os.environ["AFO_ENV_CLUSTER_SPEC"])
-        role = cluster_spec["role"]
-        assert role == "worker", "{} vs worker".format(role)
-        node_rank = cluster_spec["index"]
-        nnodes = len(cluster_spec[role])
+        # Use generic environment variable name
+        cluster_spec = json.loads(os.environ.get("CLUSTER_SPEC", "{}"))
+        if not cluster_spec:
+            return 0, 1
+            
+        role = cluster_spec.get("role", "worker")
+        node_rank = cluster_spec.get("index", 0)
+        nnodes = len(cluster_spec.get(role, []))
         return int(node_rank), nnodes
-    except (KeyError, json.JSONDecodeError, AssertionError):
+    except (KeyError, json.JSONDecodeError, ValueError):
         # Single node mode
         return 0, 1
+
+
+def safe_path_display(path):
+    """Safely display path information without exposing absolute paths"""
+    try:
+        path_obj = Path(path)
+        if path_obj.is_absolute():
+            # Only show the last 2-3 components
+            parts = path_obj.parts
+            if len(parts) > 3:
+                return f".../{'/'.join(parts[-2:])}"
+            elif len(parts) > 1:
+                return f"./{'/'.join(parts[-2:])}"
+            else:
+                return path_obj.name
+        return str(path_obj)
+    except Exception:
+        return "[sanitized_path]"
 
 
 def extract_knowledge_point_names(file_path):
@@ -59,7 +77,7 @@ def extract_knowledge_point_names(file_path):
     valid_lines = 0
     
     if not os.path.exists(file_path):
-        logger.error("Input file not found: {}".format(file_path))
+        logger.error("Input file not found: {}".format(safe_path_display(file_path)))
         return []
     
     try:
@@ -80,7 +98,7 @@ def extract_knowledge_point_names(file_path):
                         unique_names.add(line)
                         
     except Exception as e:
-        logger.error("Error reading file {}: {}".format(file_path, e))
+        logger.error("Error reading file: {}".format(str(e)))
         return []
     
     knowledge_point_names = sorted(list(unique_names))  # Sort for consistent ordering
@@ -171,23 +189,23 @@ def save_embeddings_and_metadata(
         # Save dense embeddings
         dense_file = output_path / "knowledge_point_names_dense.npy"
         np.save(dense_file, dense_embeddings)
-        logger.info("Saved dense embeddings to {}".format(dense_file))
+        logger.info("Dense embeddings saved successfully")
         
         # Save sparse embeddings
         sparse_file = output_path / "knowledge_point_names_sparse.npy"
         np.save(sparse_file, sparse_embeddings, allow_pickle=True)
-        logger.info("Saved sparse embeddings to {}".format(sparse_file))
+        logger.info("Sparse embeddings saved successfully")
         
         # Save knowledge point names list
         list_file = output_path / "knowledge_point_names_list.txt"
         with open(list_file, 'w', encoding='utf-8') as f:
             for i, name in enumerate(knowledge_point_names):
                 f.write("{}\t{}\n".format(i, name))  # Include index for easy reference
-        logger.info("Saved knowledge point names list to {}".format(list_file))
+        logger.info("Knowledge point names list saved successfully")
         
-        # Save metadata
+        # Save metadata (without sensitive path information)
         metadata = {
-            "model_path": model_path,
+            "model_name": Path(model_path).name,  # Only model name, not full path
             "num_knowledge_point_names": len(knowledge_point_names),
             "dense_embedding_shape": list(dense_embeddings.shape),
             "sparse_embedding_count": len(sparse_embeddings),
@@ -209,18 +227,16 @@ def save_embeddings_and_metadata(
         metadata_file = output_path / "embedding_metadata.json"
         with open(metadata_file, 'w', encoding='utf-8') as f:
             json.dump(metadata, f, ensure_ascii=False, indent=2)
-        logger.info("Saved metadata to {}".format(metadata_file))
+        logger.info("Metadata saved successfully")
         
-        # Save processing log
+        # Save processing log (without sensitive path information)
         log_file = output_path / "processing_log.txt"
         with open(log_file, 'w', encoding='utf-8') as f:
             f.write("Knowledge Point Names Embedding Extraction Log\n")
             f.write("=" * 55 + "\n\n")
             f.write("Purpose: Extract embeddings for knowledge point names for clustering\n")
             f.write("Target: Knowledge point names (text before ' - ' separator)\n\n")
-            f.write("Input file: {}\n".format(getattr(args, 'input_file', 'N/A') if 'args' in globals() else 'N/A'))
-            f.write("Output directory: {}\n".format(output_dir))
-            f.write("Model path: {}\n".format(model_path))
+            f.write("Model: {}\n".format(Path(model_path).name))
             f.write("Number of unique knowledge point names: {}\n".format(len(knowledge_point_names)))
             f.write("Dense embedding shape: {}\n".format(dense_embeddings.shape))
             f.write("Sparse embedding count: {}\n".format(len(sparse_embeddings)))
@@ -232,7 +248,7 @@ def save_embeddings_and_metadata(
             if len(knowledge_point_names) > 20:
                 f.write("  ... and {} more\n".format(len(knowledge_point_names) - 20))
                 
-        logger.info("Saved processing log to {}".format(log_file))
+        logger.info("Processing log saved successfully")
         
     except Exception as e:
         logger.error("Error saving results: {}".format(e))
@@ -353,26 +369,43 @@ def process_embeddings_multi_gpu(
     logger.info("Multi-GPU processing completed")
 
 
+def load_config():
+    """Load configuration from environment variables with safe defaults"""
+    return {
+        'data_dir': os.getenv('DATA_DIR', './data'),
+        'model_dir': os.getenv('MODEL_DIR', './models'),
+        'output_dir': os.getenv('OUTPUT_DIR', './output'),
+        'embedding_model': os.getenv('EMBEDDING_MODEL', 'bge-m3'),
+        'batch_size': int(os.getenv('BATCH_SIZE', '256')),
+        'log_level': os.getenv('LOG_LEVEL', 'INFO'),
+        'show_paths': os.getenv('SHOW_PATHS', 'false').lower() == 'true'
+    }
+
+
 def main():
     """Main function for embedding extraction"""
-    # Get project root directory
+    # Load configuration
+    config = load_config()
+    
+    # Get project root directory (always relative)
     project_root = get_project_root()
     
-    # Define default paths relative to project root
-    default_input_file = project_root / "data" / "processed" / "knowledge_consolidation" / "consolidated_knowledge_points.txt"
-    default_output_dir = project_root / "data" / "processed" / "embeddings"
+    # Define default paths using configuration
+    default_input_file = os.path.join(config['data_dir'], "processed", "knowledge_consolidation", "consolidated_knowledge_points.txt")
+    default_output_dir = os.path.join(config['output_dir'], "embeddings")
+    default_model_path = os.path.join(config['model_dir'], config['embedding_model'])
     
     parser = argparse.ArgumentParser(description='Extract embeddings for knowledge point names')
     parser.add_argument('--input_file', type=str,
-                       default=str(default_input_file),
+                       default=default_input_file,
                        help='Input consolidated knowledge points file')
     parser.add_argument('--output_dir', type=str,
-                       default=str(default_output_dir),
+                       default=default_output_dir,
                        help='Output directory for embeddings')
     parser.add_argument('--model_path', type=str,
-                   default='./models/bge-m3',
-                   help='Path to BGE-M3 model')
-    parser.add_argument('--batch_size', type=int, default=256,
+                       default=default_model_path,
+                       help='Path to BGE-M3 model')
+    parser.add_argument('--batch_size', type=int, default=config['batch_size'],
                        help='Batch size for encoding')
     parser.add_argument('--num_processes', type=int, default=1,
                        help='Number of processes per worker')
@@ -384,19 +417,22 @@ def main():
     global args
     args = parser.parse_args()
     
-    # Log the paths being used
-    logger.info("Project root: {}".format(project_root))
-    logger.info("Input file: {}".format(args.input_file))
-    logger.info("Output directory: {}".format(args.output_dir))
+    # Safe logging of configuration
+    logger.info("Embedding extraction initialized")
+    logger.info("Model: {}".format(Path(args.model_path).name))
+    if config['show_paths']:
+        # Only show paths if explicitly enabled (for debugging)
+        logger.info("Input file: {}".format(safe_path_display(args.input_file)))
+        logger.info("Output directory: {}".format(safe_path_display(args.output_dir)))
     
     # Check input file
     if not os.path.exists(args.input_file):
-        logger.error("Input file not found: {}".format(args.input_file))
+        logger.error("Input file not found")
         return
     
     # Check model path
     if not os.path.exists(args.model_path):
-        logger.error("Model path not found: {}".format(args.model_path))
+        logger.error("Model path not found")
         return
     
     # Extract knowledge point names

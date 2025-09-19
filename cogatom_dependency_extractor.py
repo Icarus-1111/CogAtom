@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+CogAtom Knowledge Dependency Extraction with GPT-4o
+
+SETUP INSTRUCTIONS:
+1. Replace "YOUR_INTERNAL_API_KEY_HERE" with your actual internal API key
+2. Replace "YOUR_OPENAI_API_KEY_HERE" with your actual OpenAI API key
+3. Or set environment variable OPENAI_API_KEY for standard API
+
+USAGE:
+python dependency_extraction.py
+"""
 
 import os
 import json
@@ -70,11 +81,11 @@ class UnifiedOpenAIClient:
             
             print(f"[DEBUG] Creating internal API client...")
             self.client = InternalOpenAIClient(
-                app_key=app_key or 1791012913151668297,  # Default app key
+                app_key=app_key or "YOUR_INTERNAL_API_KEY_HERE",  # Replace with your internal API key
                 max_tokens=16384,
                 timeout=60*1000*5
             )
-            print(f"[INFO] Initialized internal API client with app_key={app_key or 1791012913151668297}")
+            print(f"[INFO] Initialized internal API client")
             
         elif self.api_mode == "standard":
             if not standard_available:
@@ -82,13 +93,13 @@ class UnifiedOpenAIClient:
             if not api_key:
                 api_key = os.getenv('OPENAI_API_KEY')
             if not api_key:
+                api_key = "YOUR_OPENAI_API_KEY_HERE"  # Replace with your OpenAI API key
                 raise ValueError("OpenAI API key required for standard API")
             
             print(f"[DEBUG] Creating standard API client...")
             import openai
             self.client = openai.OpenAI(api_key=api_key)
             print(f"[INFO] Initialized standard API client with model={model}")
-            
         else:
             raise ValueError(f"Unable to initialize API client with mode: {api_mode}")
     
