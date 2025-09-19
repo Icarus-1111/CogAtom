@@ -11,7 +11,7 @@ A complete pipeline for generating cognitive atom combinations from mathematical
   ```bash
   pip install -r requirements.txt
   ```
-- Raw datasets downloaded to `data/raw/download_data/` (AIME, MATH-500,......)
+- Raw datasets downloaded to `data/raw/download_data/` (gsm8k,......)
 - API configuration for GPT-4o calls
 - BGE-M3 model downloaded locally
 
