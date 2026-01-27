@@ -114,7 +114,7 @@ tail -f pipeline.log
 
 ## Citation
 ```latex
-@article{chen2025cogato,,
+@article{chen2025cogatom,
       title={CogAtom: From Cognitive Atoms to Olympiad-level Mathematical Reasoning in Large Language Models}, 
       author={Zhuofan Chen and Jiyuan He and Yichi Zhang and Xing Hu and Haoxing Wen and Jun Bai and Wenge Rong},
       year={2025},
